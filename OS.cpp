@@ -9,11 +9,6 @@ struct Queue
 	int BurstTime;
 };
 
-float processFun(struct Queue* q, int size,struct Queue* Que);
-void minArrivalTime(struct Queue* que,int size);
-void minBurstTime(struct Queue* que,int size);
-int CheckAllProcessFinish(struct Queue* Que,int size);
-
 float CalTotalBurstTime(struct Queue* Que,int n)
 {
 	float BurstTime=0;//to calculate total burst time
@@ -23,6 +18,11 @@ float CalTotalBurstTime(struct Queue* Que,int n)
 	}
 	return BurstTime;
 }
+
+float processFun(struct Queue* q, int size,struct Queue* Que);
+void minArrivalTime(struct Queue* que,int size);
+void minBurstTime(struct Queue* que,int size);
+int CheckAllProcessFinish(struct Queue* Que,int size);
 
 int main()
 {
@@ -78,7 +78,6 @@ int main()
     {
         printf("\n P%d          %d               %d      ",(q1+i)->pid,(q1+i)->ArrivalTime,(q1+i)->BurstTime);
     }
-
     printf("\n");
 
     printf("\nDetails Of Processes in Queue2\n");
@@ -87,7 +86,6 @@ int main()
     {
         printf("\n P%d         %d              %d  ",(q2+i)->pid,(q2+i)->ArrivalTime,(q2+i)->BurstTime);
     }
-
     printf("\n\n");
     
     TotalTurnAroundTime=processFun(q1,n1,Que1);
@@ -100,7 +98,7 @@ int main()
     printf("\nAverage WaitingTime: %.2f\n",AvgWaitingTime);
 
     printf("\n\n");
-
+	
     TotalTurnAroundTime=processFun(q2,n2,Que2);
     AvgTurnAroundTime=TotalTurnAroundTime/n2;
     TotalBurstTime=CalTotalBurstTime(q2,n2);
@@ -232,29 +230,24 @@ void minBurstTime(struct Queue* que,int size)
 		{
 			if(((que+j)->BurstTime)>((que+j+1)->BurstTime))
 			{
-				//to swap Burst Time in dec Order
-				int temp=(que+j)->BurstTime;
+				int temp=(que+j)->BurstTime;////swap Burst Time in decreasing Order
 				(que+j)->BurstTime=(que+j+1)->BurstTime;
 				(que+j+1)->BurstTime=temp;
 
-				//to swap pid 
-				temp=(que+j)->pid;
+				temp=(que+j)->pid;//swap pid 
 				(que+j)->pid=(que+j+1)->pid;
 				(que+j+1)->pid=temp;
 
-				//to swap Arrival time in dec Order
-				temp=(que+j)->ArrivalTime;
+				temp=(que+j)->ArrivalTime;////swap Arrival time in decreasing Order
 				(que+j)->ArrivalTime=(que+j+1)->ArrivalTime;
 				(que+j+1)->ArrivalTime=temp;	
 			}
 		}
 	}
 }
-
 int CheckAllProcessFinish(struct Queue* Que,int size)
 {
-	//to check is there any processes left yet to be processed
-	int flag=1;
+	int flag=1;////to check is there any processes left yet to be processed
 	for(int i=0;i<size;i++)
 	{
 		if((Que+i)->BurstTime!=0)
