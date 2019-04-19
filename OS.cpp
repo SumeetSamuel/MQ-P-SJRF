@@ -93,20 +93,10 @@ int main()
     TotalBurstTime=CalTotalBurstTime(q1,n1);
     AvgWaitingTime=(TotalTurnAroundTime-TotalBurstTime)/n1;
 
-    printf("\nFor Queue1");
+    printf("\n");
     printf("\nAverage TurnAroundTime: %.2f\n", AvgTurnAroundTime);
     printf("\nAverage WaitingTime: %.2f\n",AvgWaitingTime);
 
-    printf("\n\n");
-	
-    TotalTurnAroundTime=processFun(q2,n2,Que2);
-    AvgTurnAroundTime=TotalTurnAroundTime/n2;
-    TotalBurstTime=CalTotalBurstTime(q2,n2);
-    AvgWaitingTime=(TotalTurnAroundTime-TotalBurstTime)/n2;
-
-    printf("\nFor Queue2");
-    printf("\nAverage TurnAroundTime: %.2f\n",AvgTurnAroundTime);
-    printf("\nAverage Waiting Time: %.2f\n",AvgWaitingTime);
     printf("\n\n");
 	return 0;
 }
