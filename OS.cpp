@@ -172,7 +172,7 @@ void minArrivalTime(struct Queue* que,int size)
 		{
 			if(((que+j)->ArrivalTime)>((que+j+1)->ArrivalTime))
 			{
-				//to swap Arrival time in dec Order
+				//to swap arrival time in dec
 				int temp=(que+j)->ArrivalTime;
 				(que+j)->ArrivalTime=(que+j+1)->ArrivalTime;
 				(que+j+1)->ArrivalTime=temp;
